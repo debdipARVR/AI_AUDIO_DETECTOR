@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+import os
+
+SLIDES_HTML_PATH = r"c:\books\08_acoustic_resonance_audio_forensics\video_assets\slides.html"
+os.makedirs(os.path.dirname(SLIDES_HTML_PATH), exist_ok=True)
+
+html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -706,3 +711,9 @@
     </script>
 </body>
 </html>
+"""
+
+with open(SLIDES_HTML_PATH, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print(f"Successfully generated Amazon Hackathon Video Slides HTML: {SLIDES_HTML_PATH}")
