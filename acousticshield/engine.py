@@ -193,9 +193,25 @@ class AcousticResonanceEngine:
         if audio_array is None:
             if audio_data is not None:
                 try:
-                    audio_array = np.frombuffer(audio_data, dtype=np.int16).astype(np.float32) / 32768.0
+                    import io
+                    import scipy.io.wavfile as wf
+                    sr, arr = wf.read(io.BytesIO(audio_data))
+                    if arr.dtype == np.int16:
+                        audio_array = arr.astype(np.float32) / 32768.0
+                    elif arr.dtype == np.int32:
+                        audio_array = arr.astype(np.float32) / 2147483648.0
+                    elif arr.dtype == np.uint8:
+                        audio_array = arr.astype(np.float32) / 128.0 - 1.0
+                    else:
+                        audio_array = arr.astype(np.float32)
+                    if len(audio_array.shape) > 1:
+                        audio_array = np.mean(audio_array, axis=1)
+                    sample_rate = sr
                 except Exception:
-                    audio_array = np.frombuffer(audio_data, dtype=np.uint8).astype(np.float32) / 128.0 - 1.0
+                    try:
+                        audio_array = np.frombuffer(audio_data, dtype=np.int16).astype(np.float32) / 32768.0
+                    except Exception:
+                        audio_array = np.frombuffer(audio_data, dtype=np.uint8).astype(np.float32) / 128.0 - 1.0
             else:
                 if preset_type == "human_bbc":
                     audio_array = self.generate_synthetic_signal(5.0, sample_rate, is_ai=False, channel=channel)

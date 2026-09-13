@@ -160,13 +160,29 @@ class MusicResonanceEngine:
         if audio_left is None:
             if raw_audio_bytes is not None:
                 try:
-                    arr = np.frombuffer(raw_audio_bytes, dtype=np.int16).astype(np.float32) / 32768.0
-                    audio_left = arr[0::2]
-                    audio_right = arr[1::2] if len(arr) > 1 else audio_left
+                    import io
+                    import scipy.io.wavfile as wf
+                    sr, arr = wf.read(io.BytesIO(raw_audio_bytes))
+                    if arr.dtype == np.int16:
+                        arr = arr.astype(np.float32) / 32768.0
+                    else:
+                        arr = arr.astype(np.float32)
+                    if len(arr.shape) > 1 and arr.shape[1] >= 2:
+                        audio_left = arr[:, 0]
+                        audio_right = arr[:, 1]
+                    else:
+                        audio_left = arr.flatten() if len(arr.shape) > 1 else arr
+                        audio_right = audio_left.copy()
+                    sample_rate = sr
                 except Exception:
-                    arr = np.frombuffer(raw_audio_bytes, dtype=np.float32)
-                    audio_left = arr
-                    audio_right = arr
+                    try:
+                        arr = np.frombuffer(raw_audio_bytes, dtype=np.int16).astype(np.float32) / 32768.0
+                        audio_left = arr[0::2]
+                        audio_right = arr[1::2] if len(arr) > 1 else audio_left
+                    except Exception:
+                        arr = np.frombuffer(raw_audio_bytes, dtype=np.float32)
+                        audio_left = arr
+                        audio_right = arr
             else:
                 if preset_type == "authentic_orchestral" or preset_type == "human_bbc":
                     audio_left, audio_right = self.generate_synthetic_music(6.0, sample_rate, is_ai=False)
