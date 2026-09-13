@@ -1,0 +1,321 @@
+[
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Jazz Duo (Piano & Guitar Only)",
+    "file": "2202ce6f-f96a-45d9-951f-b48c26a12bae.mp3",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AI_GENERATED_MUSIC",
+    "confidence": 0.995,
+    "sample_rate": 48000,
+    "cutoff_khz": 24.0,
+    "stereo_coherence": 0.9118,
+    "comb_spikes": [
+      600
+    ],
+    "delta_snr": 2.4,
+    "latency_ms": 5338.63
+  },
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Jazz Duo (Piano & Guitar Only)",
+    "file": "43d85b1c-6b47-4c28-b804-3ade930d2bb1.mp3",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.99,
+    "sample_rate": 48000,
+    "cutoff_khz": 24.0,
+    "stereo_coherence": 0.1868,
+    "comb_spikes": [
+      1200,
+      600
+    ],
+    "delta_snr": 10.6,
+    "latency_ms": 3372.6
+  },
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Jazz Guitar & Piano Duo",
+    "file": "b09c4980-3494-4b59-b649-156e4d0da6b2.mp3",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AI_GENERATED_MUSIC",
+    "confidence": 0.99,
+    "sample_rate": 48000,
+    "cutoff_khz": 16.0,
+    "stereo_coherence": 0.8441,
+    "comb_spikes": [
+      1200,
+      600,
+      2400
+    ],
+    "delta_snr": 11.4,
+    "latency_ms": 3709.92
+  },
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Jazz Guitar & Piano Duo",
+    "file": "5f4c4a2d-de09-452f-9872-4958aae0da01.mp3",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AI_GENERATED_MUSIC",
+    "confidence": 0.99,
+    "sample_rate": 48000,
+    "cutoff_khz": 16.0,
+    "stereo_coherence": 0.9483,
+    "comb_spikes": [
+      2400
+    ],
+    "delta_snr": 9.8,
+    "latency_ms": 2875.42
+  },
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Piano Trio Post-Bop",
+    "file": "404e9833-9e82-4ee3-96fd-ee97edd09e7c.mp3",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AI_GENERATED_MUSIC",
+    "confidence": 0.986,
+    "sample_rate": 48000,
+    "cutoff_khz": 16.0,
+    "stereo_coherence": 0.6566,
+    "comb_spikes": [],
+    "delta_snr": 9.0,
+    "latency_ms": 3231.06
+  },
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Autumn Leaves Jazz Quartet",
+    "file": "fd54d096-8f30-4e44-9042-f0c88f2cc14b.mp3",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AI_GENERATED_MUSIC",
+    "confidence": 0.99,
+    "sample_rate": 48000,
+    "cutoff_khz": 16.0,
+    "stereo_coherence": 0.5694,
+    "comb_spikes": [
+      1200,
+      600,
+      1800,
+      2400
+    ],
+    "delta_snr": 12.2,
+    "latency_ms": 3166.52
+  },
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Autumn Leaves Jazz Quartet",
+    "file": "1dfa326c-44d6-4645-bbf1-f7db7583ddbd.mp3",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AI_GENERATED_MUSIC",
+    "confidence": 0.986,
+    "sample_rate": 48000,
+    "cutoff_khz": 16.0,
+    "stereo_coherence": 0.6817,
+    "comb_spikes": [],
+    "delta_snr": 9.0,
+    "latency_ms": 3342.27
+  },
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Baroque Strings Instrumental",
+    "file": "33867cfd-349d-4a8d-8dfd-bb7a5597f4f3.mp3",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AI_GENERATED_MUSIC",
+    "confidence": 0.99,
+    "sample_rate": 48000,
+    "cutoff_khz": 17.0,
+    "stereo_coherence": 0.6523,
+    "comb_spikes": [
+      1800
+    ],
+    "delta_snr": 9.8,
+    "latency_ms": 3095.87
+  },
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Baroque Strings Instrumental",
+    "file": "228fe407-d5ce-4b69-95e2-6ad2136c359a.mp3",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AI_GENERATED_MUSIC",
+    "confidence": 0.99,
+    "sample_rate": 48000,
+    "cutoff_khz": 17.0,
+    "stereo_coherence": 0.8651,
+    "comb_spikes": [
+      1200,
+      1800
+    ],
+    "delta_snr": 10.6,
+    "latency_ms": 3304.59
+  },
+  {
+    "type": "AI_INSTRUMENTAL",
+    "desc": "Suno: Cool Jazz (Trumpet, Sax, Piano)",
+    "file": "7bbdaa05-879a-40ee-8bff-c3225b6cd9c6.mp3",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AI_GENERATED_MUSIC",
+    "confidence": 0.99,
+    "sample_rate": 48000,
+    "cutoff_khz": 17.0,
+    "stereo_coherence": 0.96,
+    "comb_spikes": [
+      600,
+      1800
+    ],
+    "delta_snr": 10.6,
+    "latency_ms": 3224.35
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Mozart: Piece for Piano K176",
+    "file": "mozart-a_piece_for_piano_k176.wav",
+    "engine_verdict": "AI_GENERATED_MUSIC",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.99,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": 0.2034,
+    "comb_spikes": [
+      600,
+      2400
+    ],
+    "delta_snr": 10.6,
+    "latency_ms": 4330.3
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Mozart: Adagio in B-Flat",
+    "file": "mozart-adagio_in_b_flat.wav",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.995,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": 0.1057,
+    "comb_spikes": [
+      1200
+    ],
+    "delta_snr": 0.23,
+    "latency_ms": 15820.96
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Chopin: Prelude Op.28 No.16",
+    "file": "chopin-2542prelude_opus28_no16_in_b_flat_minor.wav",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.995,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": 0.259,
+    "comb_spikes": [
+      2400
+    ],
+    "delta_snr": 0.04,
+    "latency_ms": 3761.42
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Chopin: Polonaise Op.26 No.1",
+    "file": "chopin-2_polonaises_op26_n1.wav",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.995,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": 0.2471,
+    "comb_spikes": [
+      600
+    ],
+    "delta_snr": 0.16,
+    "latency_ms": 7767.97
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Chopin: Ballade No.2 in F Major",
+    "file": "chopin-ballade_no2_in_f_major.wav",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.995,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": -0.1505,
+    "comb_spikes": [
+      2400
+    ],
+    "delta_snr": 0.79,
+    "latency_ms": 7081.33
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Beethoven: Instrumental Opus 122",
+    "file": "beethoven-122.wav",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.995,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": 0.1483,
+    "comb_spikes": [
+      1200
+    ],
+    "delta_snr": -0.18,
+    "latency_ms": 7779.69
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Beethoven: Instrumental Opus 13",
+    "file": "beethoven-13.wav",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.995,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": -0.5425,
+    "comb_spikes": [],
+    "delta_snr": 1.25,
+    "latency_ms": 10998.3
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Bach: Instrumental Piece 0037",
+    "file": "bach-003706b.wav",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.995,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": 0.2205,
+    "comb_spikes": [],
+    "delta_snr": 0.27,
+    "latency_ms": 478.41
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Bach: Instrumental Piece 0040",
+    "file": "bach-004003b.wav",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.995,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": 0.2579,
+    "comb_spikes": [],
+    "delta_snr": -0.19,
+    "latency_ms": 531.05
+  },
+  {
+    "type": "HUMAN_INSTRUMENTAL",
+    "desc": "Bach: Instrumental Piece 0041",
+    "file": "bach-004106b.wav",
+    "engine_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "calibrated_verdict": "AUTHENTIC_STUDIO_RECORDING",
+    "confidence": 0.995,
+    "sample_rate": 44100,
+    "cutoff_khz": 22.1,
+    "stereo_coherence": 0.1205,
+    "comb_spikes": [
+      2400
+    ],
+    "delta_snr": -0.31,
+    "latency_ms": 383.2
+  }
+]

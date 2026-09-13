@@ -1,0 +1,319 @@
+{
+  "n_samples": 20,
+  "accuracy": 0.8,
+  "auroc": 0.78,
+  "recall": 1.0,
+  "specificity": 0.6,
+  "confusion_matrix": {
+    "tp": 10,
+    "tn": 6,
+    "fp": 4,
+    "fn": 0
+  },
+  "evaluations": [
+    {
+      "source": "Suno AI",
+      "file": "000e9817-0d24-4142-9856-feba509af2e3.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.986,
+      "score": 0.986,
+      "sample_rate": 48000,
+      "cutoff_khz": 17.0,
+      "stereo_coherence": 0.9212,
+      "comb_spikes": [],
+      "delta_snr": 9.0
+    },
+    {
+      "source": "Suno AI",
+      "file": "001c8531-8a0f-49d6-911f-a8b486b44422.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 48000,
+      "cutoff_khz": 24.0,
+      "stereo_coherence": 0.71,
+      "comb_spikes": [
+        1200,
+        1800
+      ],
+      "delta_snr": 10.6
+    },
+    {
+      "source": "Suno AI",
+      "file": "0039562a-c5f8-478c-87af-e7deac03529d.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 48000,
+      "cutoff_khz": 24.0,
+      "stereo_coherence": 0.6022,
+      "comb_spikes": [
+        1800,
+        2400
+      ],
+      "delta_snr": 10.6
+    },
+    {
+      "source": "Suno AI",
+      "file": "00a13cec-21c3-44cb-9687-8d32ba427c79.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 48000,
+      "cutoff_khz": 16.0,
+      "stereo_coherence": 0.9546,
+      "comb_spikes": [
+        600,
+        1800
+      ],
+      "delta_snr": 10.6
+    },
+    {
+      "source": "Suno AI",
+      "file": "00aa7f86-2bd6-4250-9d24-8b646992c93c.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 48000,
+      "cutoff_khz": 17.0,
+      "stereo_coherence": 0.4659,
+      "comb_spikes": [
+        1200,
+        1800
+      ],
+      "delta_snr": 10.6
+    },
+    {
+      "source": "Suno AI",
+      "file": "01260b84-8501-460a-9c6c-a8de3e826738.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 48000,
+      "cutoff_khz": 24.0,
+      "stereo_coherence": 0.9434,
+      "comb_spikes": [
+        1200,
+        600
+      ],
+      "delta_snr": 10.6
+    },
+    {
+      "source": "Suno AI",
+      "file": "01479903-076f-428a-872d-7ba736414869.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 48000,
+      "cutoff_khz": 17.0,
+      "stereo_coherence": 0.9723,
+      "comb_spikes": [
+        1200,
+        1800
+      ],
+      "delta_snr": 10.6
+    },
+    {
+      "source": "Suno AI",
+      "file": "029162e1-9756-4b51-a380-5f8e6f48f3fe.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 48000,
+      "cutoff_khz": 16.0,
+      "stereo_coherence": 0.9118,
+      "comb_spikes": [
+        1200
+      ],
+      "delta_snr": 9.8
+    },
+    {
+      "source": "Suno AI",
+      "file": "029ac549-4eaf-4e60-a65a-b4c40beb34c7.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 48000,
+      "cutoff_khz": 17.0,
+      "stereo_coherence": 0.8985,
+      "comb_spikes": [
+        1200,
+        600
+      ],
+      "delta_snr": 10.6
+    },
+    {
+      "source": "Suno AI",
+      "file": "02e3c97e-9c8d-4118-b879-01867092c659.mp3",
+      "ground_truth": "AI_GENERATED_MUSIC",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 48000,
+      "cutoff_khz": 16.0,
+      "stereo_coherence": 0.8201,
+      "comb_spikes": [
+        1200
+      ],
+      "delta_snr": 9.8
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-003706b.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AUTHENTIC_STUDIO_RECORDING",
+      "confidence": 0.995,
+      "score": 0.0050000000000000044,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.2205,
+      "comb_spikes": [],
+      "delta_snr": 0.27
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-003806b.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.1739,
+      "comb_spikes": [
+        600,
+        2400
+      ],
+      "delta_snr": 10.6
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-003907b.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.0993,
+      "comb_spikes": [
+        1200,
+        2400
+      ],
+      "delta_snr": 10.6
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-003907bv.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.228,
+      "comb_spikes": [
+        600,
+        1200,
+        2400
+      ],
+      "delta_snr": 11.4
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-004003b.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AUTHENTIC_STUDIO_RECORDING",
+      "confidence": 0.995,
+      "score": 0.0050000000000000044,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.2579,
+      "comb_spikes": [],
+      "delta_snr": -0.19
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-004006b.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AI_GENERATED_MUSIC",
+      "confidence": 0.99,
+      "score": 0.99,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.2177,
+      "comb_spikes": [
+        1200,
+        1800,
+        2400,
+        600
+      ],
+      "delta_snr": 12.2
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-004008b.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AUTHENTIC_STUDIO_RECORDING",
+      "confidence": 0.995,
+      "score": 0.0050000000000000044,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.2627,
+      "comb_spikes": [],
+      "delta_snr": 0.31
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-004106b.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AUTHENTIC_STUDIO_RECORDING",
+      "confidence": 0.995,
+      "score": 0.0050000000000000044,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.1205,
+      "comb_spikes": [
+        2400
+      ],
+      "delta_snr": -0.31
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-004106bs.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AUTHENTIC_STUDIO_RECORDING",
+      "confidence": 0.995,
+      "score": 0.0050000000000000044,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.161,
+      "comb_spikes": [
+        2400
+      ],
+      "delta_snr": -0.38
+    },
+    {
+      "source": "Human Master",
+      "file": "bach-004207b.wav",
+      "ground_truth": "AUTHENTIC_STUDIO_RECORDING",
+      "verdict": "AUTHENTIC_STUDIO_RECORDING",
+      "confidence": 0.995,
+      "score": 0.0050000000000000044,
+      "sample_rate": 44100,
+      "cutoff_khz": 22.1,
+      "stereo_coherence": 0.3774,
+      "comb_spikes": [],
+      "delta_snr": 0.08
+    }
+  ]
+}

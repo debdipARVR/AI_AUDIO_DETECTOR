@@ -1,0 +1,3 @@
+file 'c:\books\08_acoustic_resonance_audio_forensics\video_assets\audio\scene4_scammer_call.mp3'
+file 'c:\books\08_acoustic_resonance_audio_forensics\video_assets\audio\spacer.mp3'
+file 'c:\books\08_acoustic_resonance_audio_forensics\video_assets\audio\scene4_alexa_intercept.mp3'

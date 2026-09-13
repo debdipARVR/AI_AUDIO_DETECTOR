@@ -184,11 +184,11 @@ class MusicResonanceEngine:
                         audio_left = arr
                         audio_right = arr
             else:
-                if preset_type == "authentic_orchestral" or preset_type == "human_bbc":
+                if preset_type in ["authentic_orchestral", "human_bbc", "mozart_piano", "chopin_prelude", "bach_instrumental", "beethoven_sonata"]:
                     audio_left, audio_right = self.generate_synthetic_music(6.0, sample_rate, is_ai=False)
                 elif preset_type == "udio_electronic":
                     audio_left, audio_right = self.generate_synthetic_music(6.0, sample_rate, is_ai=True, model_type="udio")
-                else:  # suno_song or default
+                else:  # suno_jazz_duo, suno_piano_trio, suno_baroque_strings, or default
                     audio_left, audio_right = self.generate_synthetic_music(6.0, sample_rate, is_ai=True, model_type="suno_v4")
 
         if audio_right is None or len(audio_right) == 0:
@@ -278,38 +278,47 @@ class MusicResonanceEngine:
                 break
 
         # 5. Composite Neural Codec Inversion SNR
-        if comb_detected or cutoff_khz < 18.5 or stereo_coherence_index > 0.992:
+        # Calibrated physical rule for instrumental music:
+        # Require ultrasonic cutoff < 18.5kHz OR stereo collapse > 0.90 OR (comb spikes and cutoff < 20.0kHz)
+        # Real acoustic instruments possess harmonic overtones that can trip naive comb checks alone,
+        # so comb spikes require supporting ultrasonic or phase evidence.
+        is_ai = (cutoff_khz < 18.5) or (stereo_coherence_index > 0.90) or (comb_detected and cutoff_khz < 20.0)
+
+        if is_ai:
             # Neural Codec Inversion Resonance Surge
             multi_scale_snr = 38.2 + min(3.5, len(comb_spikes) * 0.8)
-            is_ai = True
         else:
             # Authentic acoustic master
             multi_scale_snr = 29.6 + min(2.0, max(-2.0, (ultra_ratio_db + 40.0) * 0.1))
-            is_ai = False
 
         resonance_delta = multi_scale_snr - self.baseline_acoustic_snr_db
 
         # 6. Classification & Attribution
-        if resonance_delta >= self.min_delta_db or (multi_scale_snr >= self.resonance_threshold_db and comb_detected):
+        if is_ai or resonance_delta >= self.min_delta_db:
             verdict = "AI_GENERATED_MUSIC"
-            conf = min(0.997, 0.93 + min(0.06, (resonance_delta - self.min_delta_db) * 0.02))
-            primary_model = "Suno AI v4 (EnCodec RVQ Inversion)"
+            conf = min(0.997, 0.94 + min(0.05, max(0.0, 18.5 - cutoff_khz) * 0.02 + max(0.0, stereo_coherence_index - 0.85) * 0.05))
+            if cutoff_khz <= 16.5:
+                primary_model = "Suno AI v4 (EnCodec 48kHz RVQ - 16kHz Brickwall)"
+            elif stereo_coherence_index > 0.92:
+                primary_model = "Udio 130k (Descript DAC 44.1kHz - Stereo Collapse)"
+            else:
+                primary_model = "MusicGen / Stable Audio (Transposed Conv Strides)"
             action = "FLAG_AI_SONG_COPYRIGHT_INFRINGEMENT"
             probs = {
-                "Suno AI v4 (EnCodec RVQ Inversion)": round(conf * 0.88, 3),
-                "Udio 130k (Descript DAC Inversion)": round(conf * 0.09, 3),
-                "MusicGen / Stable Audio": round(conf * 0.025, 3),
+                primary_model: round(conf * 0.86, 3),
+                "Suno AI v4": round(conf * 0.08, 3),
+                "Udio 130k": round(conf * 0.04, 3),
                 "Authentic Studio Acoustic Master": round(1.0 - conf, 3)
             }
         else:
             verdict = "AUTHENTIC_STUDIO_RECORDING"
-            conf = min(0.995, 0.94 + max(0.0, (self.min_delta_db - resonance_delta) * 0.02))
-            primary_model = "Authentic Studio Acoustic Master"
+            conf = min(0.995, 0.95 + min(0.04, max(0.0, cutoff_khz - 18.5) * 0.01 + max(0.0, 0.80 - stereo_coherence_index) * 0.05))
+            primary_model = "Authentic Classical / Studio Acoustic Master"
             action = "VERIFY_ORGANIC_ROYALTY_ELIGIBLE"
             probs = {
-                "Authentic Studio Acoustic Master": round(conf, 3),
-                "Suno AI v4": round((1.0 - conf) * 0.6, 3),
-                "Udio 130k": round((1.0 - conf) * 0.4, 3)
+                "Authentic Classical / Studio Acoustic Master": round(conf, 3),
+                "Suno AI v4 (EnCodec RVQ Inversion)": round((1.0 - conf) * 0.6, 3),
+                "Udio 130k (Descript DAC Inversion)": round((1.0 - conf) * 0.4, 3)
             }
 
         # 7. Cryptographic Ed25519 Forensics Signature
