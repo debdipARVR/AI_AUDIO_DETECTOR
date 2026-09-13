@@ -6,6 +6,7 @@
 [![AWS Builder Challenge](https://img.shields.io/badge/AWS-Bedrock%20%26%20ECS-FF9900.svg)](https://aws.amazon.com/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![MCP Spec](https://img.shields.io/badge/MCP-Spec%202025--11--25-purple.svg)](https://modelcontextprotocol.io/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
 
 ---
 
@@ -19,7 +20,10 @@ While conventional classifiers rely on surface spectrogram CNNs or self-supervis
 
 ---
 
-## 🚀 Live Demo & Video
+## 🚀 Live Demo & Web App
+- **Streamlit Community Cloud (1-Click Launch)**: [![Deploy to Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
+  - Direct Deploy URL: [https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
+- **Local Web App**: Accessible at `http://localhost:8550`
 - **Devpost Project Submission**: [Build, Ship, Shape: Amazon Developer Hackathon](https://amazonappdev2026.devpost.com/)
 - **Video Demo**: Embedded at top of project submission.
 - **Image Gallery**: 10 publication-grade 3:2 ratio visuals available in `media/`.
@@ -45,6 +49,15 @@ python -m acousticshield.alexa_simulation
 ### 2. Start the MCP Server (Spec 2025-11-25)
 ```bash
 python -m acousticshield.mcp_server
+```
+
+### 3. Launch the ScribeMark Streamlit Web Application
+```bash
+# Direct run
+streamlit run app.py
+
+# Or canonical cloud entrypoint
+streamlit run streamlit_app.py
 ```
 
 ---
