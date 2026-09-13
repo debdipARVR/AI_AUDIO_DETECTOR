@@ -363,8 +363,13 @@ music_engine = get_music_engine()
 col_top_l, col_top_r = st.columns([1, 1])
 with col_top_l:
     st.markdown("""
-    <div style="font-size: 12px; font-weight: 700; color: #ff9900; letter-spacing: 0.08em; text-transform: uppercase;">
-      Amazon Developer Hackathon 2026 • Alexa+ & Amazon Music ($25K)
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700;">
+      <span style="color: #ff9900; letter-spacing: 0.08em; text-transform: uppercase;">
+        Amazon Developer Hackathon 2026 • Alexa+ ($25K)
+      </span>
+      <a href="https://youtu.be/Gh9evlZncew" target="_blank" style="color: #ef4444; text-decoration: none; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700;">
+        ▶ Video Demo
+      </a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -713,12 +718,19 @@ with tab_cloud:
     st.markdown("<div style='font-size: 14px; font-weight: 800; color: #00cae0; margin-bottom: 6px;'>AWS & ALEXA+ ARCHITECTURE</div>", unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="font-size: 12px; color: #9ca3af; line-height: 1.45;">
+    <div style="font-size: 12px; color: #9ca3af; line-height: 1.45; margin-bottom: 12px;">
       <strong>1. Amazon Echo & Music Gateway:</strong> Audio streams in real time from Amazon Music ingestion or Echo microphone array.<br><br>
       <strong>2. AWS Bedrock Agent:</strong> Claude 3.5 Sonnet orchestrates metadata verification and tool invocation.<br><br>
       <strong>3. FastMCP Tool Server:</strong> Implements <code>inspect_music_authenticity</code> over Streamable HTTP JSON-RPC 2.0.<br><br>
       <strong>4. AWS ECS Fargate:</strong> Executes sub-75ms multi-scale neural codec inversion.<br><br>
       <strong>5. Amazon S3 Object Lock:</strong> Vaults tamper-proof Ed25519 forensic dossiers.
+    </div>
+
+    <div style="text-align: center; margin-top: 14px; padding: 12px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 14px;">
+      <div style="font-size: 11px; font-weight: 700; color: #fca5a5; margin-bottom: 6px;">OFFICIAL HACKATHON VIDEO DEMO</div>
+      <a href="https://youtu.be/Gh9evlZncew" target="_blank" style="display: inline-block; background: #ef4444; color: #ffffff; font-weight: 800; font-size: 12px; padding: 8px 16px; border-radius: 20px; text-decoration: none; box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);">
+        ▶ Watch 1080p Video Demo on YouTube
+      </a>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)

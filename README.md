@@ -9,6 +9,14 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
 [![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Space-orange)](https://huggingface.co/spaces/DebdipCS/acoustic-resonance-audio-forensics)
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue)](https://huggingface.co/datasets/DebdipCS/Acoustic-Resonance-Audio-Forensics-Benchmark)
+[![YouTube Video Demo](https://img.shields.io/badge/YouTube-Video%20Demo%20(1080p)-red?logo=youtube)](https://youtu.be/Gh9evlZncew)
+
+---
+
+## 🎬 Video Demo & Presentation
+[![AcousticShield Hackathon Demo Video](https://img.youtube.com/vi/Gh9evlZncew/maxresdefault.jpg)](https://youtu.be/Gh9evlZncew)
+
+> 📺 **Watch the Full 1080p Master Demo Video on YouTube**: [https://youtu.be/Gh9evlZncew](https://youtu.be/Gh9evlZncew)
 
 ---
 
@@ -23,13 +31,13 @@ While conventional classifiers rely on surface spectrogram CNNs or self-supervis
 ---
 
 ## 🚀 Live Demo & Web App
+- **Official YouTube Video Demo**: [https://youtu.be/Gh9evlZncew](https://youtu.be/Gh9evlZncew)
 - **Hugging Face Interactive Space**: [https://huggingface.co/spaces/DebdipCS/acoustic-resonance-audio-forensics](https://huggingface.co/spaces/DebdipCS/acoustic-resonance-audio-forensics)
 - **Hugging Face Benchmark Dataset**: [https://huggingface.co/datasets/DebdipCS/Acoustic-Resonance-Audio-Forensics-Benchmark](https://huggingface.co/datasets/DebdipCS/Acoustic-Resonance-Audio-Forensics-Benchmark)
 - **Streamlit Community Cloud (1-Click Launch)**: [![Deploy to Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
   - Direct Deploy URL: [https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
 - **Local Web App**: Accessible at `http://localhost:8550`
 - **Devpost Project Submission**: [Build, Ship, Shape: Amazon Developer Hackathon](https://amazonappdev2026.devpost.com/)
-- **Video Demo**: Embedded at top of project submission.
 - **Image Gallery**: 10 publication-grade 3:2 ratio visuals available in `media/`.
 
 ---
