@@ -19,10 +19,10 @@
     }
   },
   "latency_summary": {
-    "mean_ms": 2198.61,
-    "median_ms": 2161.09,
-    "p95_ms": 2869.24,
-    "max_ms": 4068.43
+    "mean_ms": 356.12,
+    "median_ms": 349.97,
+    "p95_ms": 403.83,
+    "max_ms": 463.11
   },
   "detailed_evaluations": [
     {
@@ -34,7 +34,7 @@
       "resonance_delta_db": 8.0,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -88.7,
-      "latency_ms": 366.25
+      "latency_ms": 342.82
     },
     {
       "file": "fake/el_0001_c_part_003.flac",
@@ -45,7 +45,7 @@
       "resonance_delta_db": 8.0,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -88.4,
-      "latency_ms": 2864.66
+      "latency_ms": 318.07
     },
     {
       "file": "fake/el_0001_c_part_004.flac",
@@ -56,7 +56,7 @@
       "resonance_delta_db": -0.68,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -58.8,
-      "latency_ms": 2065.98
+      "latency_ms": 366.39
     },
     {
       "file": "fake/el_0001_c_part_005.flac",
@@ -67,7 +67,7 @@
       "resonance_delta_db": 8.0,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -89.0,
-      "latency_ms": 2251.36
+      "latency_ms": 344.12
     },
     {
       "file": "fake/el_0001_part_001.flac",
@@ -78,7 +78,7 @@
       "resonance_delta_db": 0.62,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -45.8,
-      "latency_ms": 3233.92
+      "latency_ms": 347.21
     },
     {
       "file": "fake/el_0002_c_part_001.flac",
@@ -89,7 +89,7 @@
       "resonance_delta_db": -1.31,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -65.1,
-      "latency_ms": 1969.36
+      "latency_ms": 382.73
     },
     {
       "file": "fake/el_0003_c_part_004.flac",
@@ -100,7 +100,7 @@
       "resonance_delta_db": -1.15,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -63.5,
-      "latency_ms": 2214.31
+      "latency_ms": 463.11
     },
     {
       "file": "fake/el_0003_part_001.flac",
@@ -111,7 +111,7 @@
       "resonance_delta_db": 1.41,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -37.9,
-      "latency_ms": 1987.84
+      "latency_ms": 369.52
     },
     {
       "file": "fake/el_0003_part_002.flac",
@@ -122,7 +122,7 @@
       "resonance_delta_db": -0.2,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -54.0,
-      "latency_ms": 2100.05
+      "latency_ms": 322.93
     },
     {
       "file": "fake/el_0003_part_003.flac",
@@ -133,7 +133,7 @@
       "resonance_delta_db": -0.26,
       "comb_ratio": 1.47,
       "noise_floor_dbfs": -54.6,
-      "latency_ms": 1957.57
+      "latency_ms": 329.89
     },
     {
       "file": "fake/el_0004_c_part_001.flac",
@@ -144,7 +144,7 @@
       "resonance_delta_db": -1.08,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -62.8,
-      "latency_ms": 2054.65
+      "latency_ms": 333.19
     },
     {
       "file": "fake/el_0004_c_part_002.flac",
@@ -155,7 +155,7 @@
       "resonance_delta_db": 8.0,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -89.4,
-      "latency_ms": 2429.1
+      "latency_ms": 341.91
     },
     {
       "file": "fake/el_0004_c_part_003.flac",
@@ -166,7 +166,7 @@
       "resonance_delta_db": -1.13,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -63.3,
-      "latency_ms": 2041.15
+      "latency_ms": 374.23
     },
     {
       "file": "fake/el_0005_part_001.flac",
@@ -177,7 +177,7 @@
       "resonance_delta_db": 1.27,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -39.3,
-      "latency_ms": 2168.5
+      "latency_ms": 331.45
     },
     {
       "file": "fake/el_0005_part_002.flac",
@@ -188,7 +188,7 @@
       "resonance_delta_db": 1.2,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -40.0,
-      "latency_ms": 2112.23
+      "latency_ms": 331.69
     },
     {
       "file": "fake/el_0006_c_part_002.flac",
@@ -199,7 +199,7 @@
       "resonance_delta_db": -1.63,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -68.3,
-      "latency_ms": 1991.59
+      "latency_ms": 323.58
     },
     {
       "file": "fake/el_0006_c_part_003.flac",
@@ -210,7 +210,7 @@
       "resonance_delta_db": -0.72,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -59.2,
-      "latency_ms": 2078.67
+      "latency_ms": 323.57
     },
     {
       "file": "fake/el_0006_part_001.flac",
@@ -221,7 +221,7 @@
       "resonance_delta_db": -0.43,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -56.3,
-      "latency_ms": 2146.45
+      "latency_ms": 331.31
     },
     {
       "file": "fake/el_0007_c_part_001.flac",
@@ -232,7 +232,7 @@
       "resonance_delta_db": -1.95,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -71.5,
-      "latency_ms": 2182.15
+      "latency_ms": 350.39
     },
     {
       "file": "fake/el_0007_c_part_002.flac",
@@ -243,7 +243,7 @@
       "resonance_delta_db": -1.96,
       "comb_ratio": 1.43,
       "noise_floor_dbfs": -71.6,
-      "latency_ms": 1972.99
+      "latency_ms": 333.36
     },
     {
       "file": "fake/el_0008_c_part_003.flac",
@@ -254,7 +254,7 @@
       "resonance_delta_db": 0.33,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -48.7,
-      "latency_ms": 2307.91
+      "latency_ms": 316.45
     },
     {
       "file": "fake/el_0008_c_part_004.flac",
@@ -265,7 +265,7 @@
       "resonance_delta_db": -0.03,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -52.3,
-      "latency_ms": 2074.1
+      "latency_ms": 324.28
     },
     {
       "file": "fake/el_0008_c_part_005.flac",
@@ -276,7 +276,7 @@
       "resonance_delta_db": 9.13,
       "comb_ratio": 1.45,
       "noise_floor_dbfs": -64.2,
-      "latency_ms": 2079.6
+      "latency_ms": 316.42
     },
     {
       "file": "fake/el_0008_c_part_006.flac",
@@ -287,7 +287,7 @@
       "resonance_delta_db": -0.73,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -59.3,
-      "latency_ms": 2008.79
+      "latency_ms": 377.47
     },
     {
       "file": "fake/el_0008_part_001.flac",
@@ -298,7 +298,7 @@
       "resonance_delta_db": -0.29,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -54.9,
-      "latency_ms": 2515.54
+      "latency_ms": 383.07
     },
     {
       "file": "fake/el_0008_part_002.flac",
@@ -309,7 +309,7 @@
       "resonance_delta_db": 0.78,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -44.2,
-      "latency_ms": 2009.86
+      "latency_ms": 367.96
     },
     {
       "file": "fake/el_0009_c_part_004.flac",
@@ -320,7 +320,7 @@
       "resonance_delta_db": 8.0,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -82.0,
-      "latency_ms": 1959.53
+      "latency_ms": 368.03
     },
     {
       "file": "fake/el_0009_c_part_005.flac",
@@ -331,7 +331,7 @@
       "resonance_delta_db": 8.0,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -82.3,
-      "latency_ms": 1990.32
+      "latency_ms": 398.35
     },
     {
       "file": "fake/el_0009_c_part_006.flac",
@@ -342,7 +342,7 @@
       "resonance_delta_db": 9.33,
       "comb_ratio": 1.53,
       "noise_floor_dbfs": -88.1,
-      "latency_ms": 2043.49
+      "latency_ms": 369.09
     },
     {
       "file": "fake/el_0009_c_part_007.flac",
@@ -353,7 +353,7 @@
       "resonance_delta_db": 8.0,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -76.1,
-      "latency_ms": 2092.91
+      "latency_ms": 359.89
     },
     {
       "file": "real/yt_0000_p2_part_167.flac",
@@ -364,7 +364,7 @@
       "resonance_delta_db": 1.39,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -38.1,
-      "latency_ms": 2317.55
+      "latency_ms": 447.79
     },
     {
       "file": "real/yt_0000_part_001.flac",
@@ -375,7 +375,7 @@
       "resonance_delta_db": 1.25,
       "comb_ratio": 1.37,
       "noise_floor_dbfs": -39.5,
-      "latency_ms": 460.38
+      "latency_ms": 367.53
     },
     {
       "file": "real/yt_0000_part_002.flac",
@@ -386,7 +386,7 @@
       "resonance_delta_db": 0.95,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -42.5,
-      "latency_ms": 2373.84
+      "latency_ms": 348.44
     },
     {
       "file": "real/yt_0000_part_003.flac",
@@ -397,7 +397,7 @@
       "resonance_delta_db": 0.83,
       "comb_ratio": 2.91,
       "noise_floor_dbfs": -43.7,
-      "latency_ms": 2245.14
+      "latency_ms": 346.23
     },
     {
       "file": "real/yt_0000_part_004.flac",
@@ -408,7 +408,7 @@
       "resonance_delta_db": 0.77,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -44.3,
-      "latency_ms": 2105.87
+      "latency_ms": 349.54
     },
     {
       "file": "real/yt_0000_part_005.flac",
@@ -419,7 +419,7 @@
       "resonance_delta_db": 9.29,
       "comb_ratio": 1.51,
       "noise_floor_dbfs": -38.4,
-      "latency_ms": 2310.58
+      "latency_ms": 367.14
     },
     {
       "file": "real/yt_0000_part_008.flac",
@@ -430,7 +430,7 @@
       "resonance_delta_db": 1.09,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -41.1,
-      "latency_ms": 2628.97
+      "latency_ms": 378.58
     },
     {
       "file": "real/yt_0000_part_010.flac",
@@ -441,7 +441,7 @@
       "resonance_delta_db": 0.93,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -42.7,
-      "latency_ms": 2132.59
+      "latency_ms": 340.48
     },
     {
       "file": "real/yt_0000_part_011.flac",
@@ -452,7 +452,7 @@
       "resonance_delta_db": 0.87,
       "comb_ratio": 2.32,
       "noise_floor_dbfs": -43.3,
-      "latency_ms": 2120.71
+      "latency_ms": 343.01
     },
     {
       "file": "real/yt_0000_part_013.flac",
@@ -463,7 +463,7 @@
       "resonance_delta_db": 1.27,
       "comb_ratio": 2.81,
       "noise_floor_dbfs": -39.3,
-      "latency_ms": 2170.36
+      "latency_ms": 329.99
     },
     {
       "file": "real/yt_0000_part_014.flac",
@@ -474,7 +474,7 @@
       "resonance_delta_db": 1.65,
       "comb_ratio": 1.36,
       "noise_floor_dbfs": -35.5,
-      "latency_ms": 2431.5
+      "latency_ms": 355.41
     },
     {
       "file": "real/yt_0000_part_015.flac",
@@ -485,7 +485,7 @@
       "resonance_delta_db": 9.33,
       "comb_ratio": 1.53,
       "noise_floor_dbfs": -44.5,
-      "latency_ms": 2064.46
+      "latency_ms": 343.34
     },
     {
       "file": "real/yt_0000_part_017.flac",
@@ -496,7 +496,7 @@
       "resonance_delta_db": 0.59,
       "comb_ratio": 2.14,
       "noise_floor_dbfs": -46.1,
-      "latency_ms": 2219.06
+      "latency_ms": 348.38
     },
     {
       "file": "real/yt_0000_part_019.flac",
@@ -507,7 +507,7 @@
       "resonance_delta_db": 0.81,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -43.9,
-      "latency_ms": 2028.89
+      "latency_ms": 352.91
     },
     {
       "file": "real/yt_0000_part_020.flac",
@@ -518,7 +518,7 @@
       "resonance_delta_db": 1.27,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -39.3,
-      "latency_ms": 2401.43
+      "latency_ms": 362.49
     },
     {
       "file": "real/yt_0000_part_021.flac",
@@ -529,7 +529,7 @@
       "resonance_delta_db": 1.26,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -39.4,
-      "latency_ms": 2547.91
+      "latency_ms": 335.29
     },
     {
       "file": "real/yt_0000_part_022.flac",
@@ -540,7 +540,7 @@
       "resonance_delta_db": 1.32,
       "comb_ratio": 2.02,
       "noise_floor_dbfs": -38.8,
-      "latency_ms": 2301.05
+      "latency_ms": 333.78
     },
     {
       "file": "real/yt_0000_part_024.flac",
@@ -551,7 +551,7 @@
       "resonance_delta_db": 0.95,
       "comb_ratio": 1.57,
       "noise_floor_dbfs": -42.5,
-      "latency_ms": 2216.69
+      "latency_ms": 430.58
     },
     {
       "file": "real/yt_0000_part_025.flac",
@@ -562,7 +562,7 @@
       "resonance_delta_db": 0.97,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -42.3,
-      "latency_ms": 2092.31
+      "latency_ms": 337.49
     },
     {
       "file": "real/yt_0000_part_026.flac",
@@ -573,7 +573,7 @@
       "resonance_delta_db": 0.83,
       "comb_ratio": 1.68,
       "noise_floor_dbfs": -43.7,
-      "latency_ms": 2266.22
+      "latency_ms": 365.51
     },
     {
       "file": "real/yt_0000_part_027.flac",
@@ -584,7 +584,7 @@
       "resonance_delta_db": 1.53,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -36.7,
-      "latency_ms": 2358.19
+      "latency_ms": 402.43
     },
     {
       "file": "real/yt_0000_part_028.flac",
@@ -595,7 +595,7 @@
       "resonance_delta_db": 1.11,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -40.9,
-      "latency_ms": 2377.28
+      "latency_ms": 336.32
     },
     {
       "file": "real/yt_0000_part_029.flac",
@@ -606,7 +606,7 @@
       "resonance_delta_db": 1.31,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -38.9,
-      "latency_ms": 2243.23
+      "latency_ms": 362.48
     },
     {
       "file": "real/yt_0000_part_030.flac",
@@ -617,7 +617,7 @@
       "resonance_delta_db": 0.81,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -43.9,
-      "latency_ms": 2441.61
+      "latency_ms": 352.81
     },
     {
       "file": "real/yt_0000_part_031.flac",
@@ -628,7 +628,7 @@
       "resonance_delta_db": 1.39,
       "comb_ratio": 1.36,
       "noise_floor_dbfs": -38.1,
-      "latency_ms": 2350.27
+      "latency_ms": 350.77
     },
     {
       "file": "real/yt_0000_part_033.flac",
@@ -639,7 +639,7 @@
       "resonance_delta_db": 0.96,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -42.4,
-      "latency_ms": 2157.75
+      "latency_ms": 342.11
     },
     {
       "file": "real/yt_0000_part_034.flac",
@@ -650,7 +650,7 @@
       "resonance_delta_db": 0.86,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -43.4,
-      "latency_ms": 4068.43
+      "latency_ms": 389.68
     },
     {
       "file": "real/yt_0000_part_035.flac",
@@ -661,7 +661,7 @@
       "resonance_delta_db": 9.04,
       "comb_ratio": 1.42,
       "noise_floor_dbfs": -49.7,
-      "latency_ms": 2164.43
+      "latency_ms": 370.31
     },
     {
       "file": "real/yt_0000_part_037.flac",
@@ -672,7 +672,7 @@
       "resonance_delta_db": 1.09,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -41.1,
-      "latency_ms": 2956.21
+      "latency_ms": 382.44
     },
     {
       "file": "real/yt_0000_part_038.flac",
@@ -683,7 +683,7 @@
       "resonance_delta_db": 0.49,
       "comb_ratio": 1.0,
       "noise_floor_dbfs": -47.1,
-      "latency_ms": 2092.86
+      "latency_ms": 351.47
     }
   ]
 }
