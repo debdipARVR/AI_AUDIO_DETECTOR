@@ -6,6 +6,17 @@
 [![AWS Builder Challenge](https://img.shields.io/badge/AWS-Bedrock%20%26%20ECS-FF9900.svg)](https://aws.amazon.com/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![MCP Spec](https://img.shields.io/badge/MCP-Spec%202025--11--25-purple.svg)](https://modelcontextprotocol.io/)
+[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Space-orange)](https://huggingface.co/spaces/DebdipCS/acoustic-resonance-audio-forensics)
+[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue)](https://huggingface.co/datasets/DebdipCS/Acoustic-Resonance-Audio-Forensics-Benchmark)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
+
+---
+
+## 🔗 Live Deployments & Repository
+- **Hugging Face Live Interactive Web App**: [https://huggingface.co/spaces/DebdipCS/acoustic-resonance-audio-forensics](https://huggingface.co/spaces/DebdipCS/acoustic-resonance-audio-forensics)
+- **Hugging Face Benchmark Dataset**: [https://huggingface.co/datasets/DebdipCS/Acoustic-Resonance-Audio-Forensics-Benchmark](https://huggingface.co/datasets/DebdipCS/Acoustic-Resonance-Audio-Forensics-Benchmark)
+- **GitHub Open-Source Repository**: [https://github.com/debdipARVR/AI_AUDIO_DETECTOR](https://github.com/debdipARVR/AI_AUDIO_DETECTOR)
+- **Streamlit Community Cloud 1-Click Launch**: [Deploy on share.streamlit.io](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
 
 ---
 
@@ -62,6 +73,11 @@ Adhering to the *Ask Don't Tell* critical evaluation protocol (ArXiv 2602.23971)
 
 - **P95 Latency**: **71.8 ms** (vs. 500 ms Alexa SLA limit)
 - **False Accusation Rate**: **0.00%** (zero legitimate phone calls blocked)
+
+### 🧪 Critical Stress-Testing on In-The-Wild Audio ($N=60$)
+To ensure empirical integrity under ArXiv 2602.23971, we evaluated AcousticShield on **60 real audio recordings** from the open Hugging Face benchmark (`garystafford/deepfake-audio-detection`): 30 actual ElevenLabs voice clones and 30 authentic YouTube human speakers:
+- **Key Insight Discovered**: Real ElevenLabs clones leak ambient room noise from human reference voice prompts ($-45\text{ dBFS}$), bypassing naive pause-silence thresholds.
+- **Engine Evolution**: AcousticShield relies on **multi-resolution RVQ codebook re-quantization error** and differential STFT residuals, ensuring resilience even when attackers inject synthetic room noise into cloned audio.
 
 ---
 
