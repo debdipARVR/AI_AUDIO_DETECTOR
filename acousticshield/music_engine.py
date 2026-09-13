@@ -281,8 +281,12 @@ class MusicResonanceEngine:
         # Calibrated physical rule for instrumental music:
         # Require ultrasonic cutoff < 18.5kHz OR stereo collapse > 0.90 OR (comb spikes and cutoff < 20.0kHz)
         # Real acoustic instruments possess harmonic overtones that can trip naive comb checks alone,
-        # so comb spikes require supporting ultrasonic or phase evidence.
-        is_ai = (cutoff_khz < 18.5) or (stereo_coherence_index > 0.90) or (comb_detected and cutoff_khz < 20.0)
+        # Require stereo collapse or comb spikes, preventing false accusations on low-passed human audio (e.g. VoIP/Opus)
+        is_ai = (
+            (stereo_coherence_index > 0.90) or
+            (comb_detected and cutoff_khz < 20.0) or
+            (cutoff_khz < 18.5 and stereo_coherence_index > 0.85)
+        )
 
         if is_ai:
             # Neural Codec Inversion Resonance Surge
