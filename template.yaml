@@ -1,0 +1,139 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AcousticShield 2.0 - Autonomous AI Voice Clone & Synthetic Music Sentry for Alexa+
+  Amazon Developer Hackathon 2026 (Alexa+ Track)
+  Deploys FastMCP Server on AWS ECS Fargate, Amazon S3 Object Lock Vault, and Bedrock Agent Action Group.
+
+Parameters:
+  Environment:
+    Type: String
+    Default: prod
+    AllowedValues: [dev, staging, prod]
+
+Resources:
+  # 1. Tamper-Proof Evidence Vault (Amazon S3 with Object Lock)
+  ForensicEvidenceVault:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'acousticshield-evidence-vault-${AWS::AccountId}-${AWS::Region}'
+      ObjectLockEnabled: true
+      ObjectLockConfiguration:
+        ObjectLockRule:
+          DefaultRetention:
+            Mode: COMPLIANCE
+            Years: 7
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  # 2. AcousticShield FastMCP Container Task (AWS ECS Fargate)
+  FastMCPECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Sub 'acousticshield-cluster-${Environment}'
+
+  FastMCPTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: acousticshield-fastmcp
+      Cpu: '1024'
+      Memory: '2048'
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      ExecutionRoleArn: !GetAtt FastMCPTaskExecutionRole.Arn
+      TaskRoleArn: !GetAtt FastMCPTaskRole.Arn
+      ContainerDefinitions:
+        - Name: fastmcp-server
+          Image: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/acousticshield-mcp:latest'
+          PortMappings:
+            - ContainerPort: 8000
+              Protocol: tcp
+          Environment:
+            - Name: EVIDENCE_VAULT_BUCKET
+              Value: !Ref ForensicEvidenceVault
+            - Name: MCP_PROTOCOL_VERSION
+              Value: '2025-11-25'
+            - Name: LATENCY_SLA_MS
+              Value: '500'
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref FastMCPLogGroup
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: fastmcp
+
+  FastMCPLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/ecs/acousticshield-fastmcp-${Environment}'
+      RetentionInDays: 30
+
+  FastMCPTaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: [ecs-tasks.amazonaws.com]
+            Action: ['sts:AssumeRole']
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+
+  FastMCPTaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: [ecs-tasks.amazonaws.com]
+            Action: ['sts:AssumeRole']
+      Policies:
+        - PolicyName: S3EvidenceVaultAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                  - s3:GetObject
+                  - s3:PutObjectLegalHold
+                Resource: !Sub '${ForensicEvidenceVault.Arn}/*'
+
+  # 3. Amazon Bedrock Agent Action Group Definition
+  BedrockAgentRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: [bedrock.amazonaws.com]
+            Action: ['sts:AssumeRole']
+      Policies:
+        - PolicyName: BedrockAgentPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - bedrock:InvokeModel
+                  - lambda:InvokeFunction
+                Resource: '*'
+
+Outputs:
+  EvidenceVaultBucketArn:
+    Description: ARN of the Tamper-Proof Amazon S3 Forensic Evidence Vault
+    Value: !GetAtt ForensicEvidenceVault.Arn
+  FastMCPTaskDefinitionArn:
+    Description: ECS Task Definition for AcousticShield FastMCP Server
+    Value: !Ref FastMCPTaskDefinition

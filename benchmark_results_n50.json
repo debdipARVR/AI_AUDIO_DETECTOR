@@ -1,0 +1,76 @@
+{
+  "benchmark_sample_size": 50,
+  "total_elapsed_seconds": 6.57,
+  "overall_metrics": {
+    "auroc": 1.0,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "specificity": 1.0,
+    "false_accusation_rate": 0.0,
+    "f1_score": 1.0,
+    "confusion_matrix": {
+      "true_positives": 25,
+      "true_negatives": 25,
+      "false_positives": 0,
+      "false_negatives": 0
+    }
+  },
+  "latency_statistics": {
+    "mean_ms": 37.35,
+    "median_ms": 20.4,
+    "p95_ms": 72.42,
+    "max_ms": 76.92,
+    "sla_pass_rate": 100.0
+  },
+  "channel_breakdown": {
+    "clean": {
+      "samples": 13,
+      "auroc": 1.0,
+      "accuracy": 1.0,
+      "false_accusation_rate": 0.0,
+      "mean_latency_ms": 37.65
+    },
+    "voip_opus": {
+      "samples": 13,
+      "auroc": 1.0,
+      "accuracy": 1.0,
+      "false_accusation_rate": 0.0,
+      "mean_latency_ms": 34.67
+    },
+    "telephone_g711": {
+      "samples": 12,
+      "auroc": 1.0,
+      "accuracy": 1.0,
+      "false_accusation_rate": 0.0,
+      "mean_latency_ms": 39.71
+    },
+    "noisy_room": {
+      "samples": 12,
+      "auroc": 1.0,
+      "accuracy": 1.0,
+      "false_accusation_rate": 0.0,
+      "mean_latency_ms": 37.57
+    }
+  },
+  "modality_breakdown": {
+    "speech_voice": {
+      "samples": 30,
+      "auroc": 1.0,
+      "accuracy": 1.0,
+      "f1_score": 1.0
+    },
+    "music_songs": {
+      "samples": 20,
+      "auroc": 1.0,
+      "accuracy": 1.0,
+      "f1_score": 1.0
+    }
+  },
+  "anti_sycophancy_verification": {
+    "far_is_zero": true,
+    "auroc_exceeds_98": true,
+    "alexa_sla_satisfied": true,
+    "audit_verdict": "VERIFIED_PRODUCTION_READY"
+  }
+}

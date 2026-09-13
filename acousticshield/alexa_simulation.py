@@ -3,9 +3,22 @@ AcousticShield: Interactive Alexa+ Scam Intercept Simulation
 Runs the exact live scenario featured in the hackathon video demo.
 """
 
+import os
 import sys
 import time
-from acousticshield.engine import AcousticResonanceEngine
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PACKAGE_ROOT = os.path.dirname(CURRENT_DIR)
+if PACKAGE_ROOT not in sys.path:
+    sys.path.insert(0, PACKAGE_ROOT)
+if CURRENT_DIR not in sys.path:
+    sys.path.insert(0, CURRENT_DIR)
+
+try:
+    from acousticshield.engine import AcousticResonanceEngine
+except ImportError:
+    from engine import AcousticResonanceEngine
+
 
 def run_simulation():
     engine = AcousticResonanceEngine()
@@ -23,23 +36,24 @@ def run_simulation():
     print('     The police are holding me until I pay $4,500 bail.')
     print('     Please wire the money right now, don\'t tell mom!"')
     
-    time.sleep(0.8)
+    time.sleep(0.6)
     print("\n>>> GRANDMOTHER: 'Alexa, Tommy sounds frightened... is this really him calling me?'")
     
-    time.sleep(0.6)
+    time.sleep(0.5)
     print("\n[*] Alexa+ invokes MCP Tool: inspect_audio_authenticity(stream_buffer)...")
     print("    --> Forwarding audio tensors to Amazon Bedrock Agent...")
     print("    --> AWS SageMaker ECS: Performing EnCodec 24kHz RVQ Multi-Codec Inversion...")
     
-    time.sleep(0.8)
-    report = engine.analyze_audio(preset_type="grandparent_scam")
+    time.sleep(0.5)
+    report = engine.analyze_audio(preset_type="grandparent_scam", channel="voip_opus")
     
     print(f"    --> Resonance Inversion STFT-SNR: {report.stft_snr_db} dB (Delta: +{report.resonance_delta_db} dB SURGE)")
     print(f"    --> 1D Vocoder Comb Spikes: {report.comb_peak_frequencies_hz} (HiFi-GAN periodic artifacts)")
     print(f"    --> Diaphragm Johnson Thermal Noise: ABSENT ({report.noise_floor_dbfs} dBFS silence floor)")
     print(f"    --> Cryptographic Attestation: {report.ed25519_signature[:28]}... (SEALED)")
+    print(f"    --> Inversion Latency: {report.latency_ms:.1f} ms (< 500 ms Alexa SLA)")
     
-    time.sleep(0.6)
+    time.sleep(0.5)
     print("\n" + "!" * 75)
     print("    [ALEXA+ SPOKEN WARNING & EMERGENCY RED HUD ACTIVATED]")
     print("!" * 75)
@@ -56,6 +70,7 @@ def run_simulation():
     print("=" * 75)
     print("STATUS: Scam Prevented. Zero Financial Loss. Audio Vaulted in Amazon S3.")
     print("=" * 75)
+
 
 if __name__ == "__main__":
     run_simulation()

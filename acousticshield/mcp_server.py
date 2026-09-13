@@ -1,25 +1,50 @@
 """
 AcousticShield Model Context Protocol (MCP) Server
 Spec Version: 2025-11-25 (Streamable HTTP / SSE / JSON-RPC 2.0)
-Exposes audio forensics tools to Alexa+ and AWS Bedrock Agents.
+Exposes audio forensics, music verification, and multimodal tools to Alexa+ and AWS Bedrock Agents.
 """
 
+import os
+import sys
 import json
+import base64
 from typing import Dict, Any, Optional
-from acousticshield.engine import AcousticResonanceEngine
 
-engine = AcousticResonanceEngine()
+# Ensure package root is on sys.path
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PACKAGE_ROOT = os.path.dirname(CURRENT_DIR)
+if PACKAGE_ROOT not in sys.path:
+    sys.path.insert(0, PACKAGE_ROOT)
+if CURRENT_DIR not in sys.path:
+    sys.path.insert(0, CURRENT_DIR)
+
+try:
+    from acousticshield.engine import AcousticResonanceEngine
+    from acousticshield.music_engine import MusicResonanceEngine
+    from acousticshield.multimodal_bridge import MultimodalForensicBridge
+except ImportError:
+    from engine import AcousticResonanceEngine
+    from music_engine import MusicResonanceEngine
+    from multimodal_bridge import MultimodalForensicBridge
+
+audio_engine = AcousticResonanceEngine()
+music_engine = MusicResonanceEngine()
+multimodal_bridge = MultimodalForensicBridge()
+
 
 def inspect_audio_authenticity(
     preset_case: Optional[str] = "grandparent_scam",
-    audio_base64: Optional[str] = None
+    audio_base64: Optional[str] = None,
+    channel: str = "clean"
 ) -> Dict[str, Any]:
-    report = engine.analyze_audio(preset_type=preset_case)
+    """Inspects live voice telephone stream for AI voice clones and scam intent."""
+    raw_bytes = base64.b64decode(audio_base64) if audio_base64 else None
+    report = audio_engine.analyze_audio(audio_data=raw_bytes, preset_type=preset_case, channel=channel)
     
     return {
         "status": "success",
         "mcp_version": "2025-11-25",
-        "protocol": "streamable-http",
+        "tool": "inspect_audio_authenticity",
         "verdict": report.verdict,
         "confidence": report.confidence,
         "primary_model_attributed": report.primary_model_attributed,
@@ -29,7 +54,9 @@ def inspect_audio_authenticity(
             "comb_spikes_detected": report.comb_spikes_detected,
             "comb_peak_frequencies_hz": report.comb_peak_frequencies_hz,
             "diaphragm_noise_present": report.diaphragm_noise_present,
-            "noise_floor_dbfs": report.noise_floor_dbfs
+            "noise_floor_dbfs": report.noise_floor_dbfs,
+            "channel_detected": report.channel_detected,
+            "latency_ms": report.latency_ms
         },
         "cryptography": {
             "audio_sha256": report.audio_sha256,
@@ -37,17 +64,88 @@ def inspect_audio_authenticity(
             "timestamp_utc": report.timestamp_utc
         },
         "spoken_alert_for_alexa": (
-            "Warning: This incoming call contains a synthetic AI voice clone with 99.4% confidence. "
-            "Do not transfer money or share personal details. I can block this caller and alert your family."
+            f"Warning! This incoming call contains an AI synthetic voice clone with {report.confidence*100:.1f}% confidence, "
+            f"attributed to {report.primary_model_attributed}. Do not wire money or disclose credentials. "
+            "I am blocking this call and alerting your emergency contacts."
             if report.verdict == "AI_CLONE" else
-            "This voice audio has been verified authentic. Natural human vocal cord turbulence confirmed."
+            "This voice call has been verified authentic. Natural biological vocal cord acoustics and room acoustics confirmed."
         ),
         "action_recommended": report.action_recommended
     }
 
+
+def inspect_music_authenticity(
+    preset_track: Optional[str] = "suno_song",
+    audio_base64: Optional[str] = None
+) -> Dict[str, Any]:
+    """Inspects musical audio for generative AI models (Suno, Udio, Bark) via Multi-Resolution Codec Inversion."""
+    raw_bytes = base64.b64decode(audio_base64) if audio_base64 else None
+    report = music_engine.analyze_music(raw_audio_bytes=raw_bytes, preset_type=preset_track)
+    
+    return {
+        "status": "success",
+        "mcp_version": "2025-11-25",
+        "tool": "inspect_music_authenticity",
+        "verdict": report.verdict,
+        "confidence": report.confidence,
+        "primary_model_attributed": report.primary_model_attributed,
+        "telemetry": {
+            "multi_scale_snr_db": report.multi_scale_snr_db,
+            "resonance_delta_db": report.resonance_delta_db,
+            "stereo_coherence_index": report.stereo_coherence_index,
+            "stereo_phase_dispersion_deg": report.stereo_phase_dispersion_deg,
+            "comb_spikes_detected": report.comb_spikes_detected,
+            "comb_peak_frequencies_hz": report.comb_peak_frequencies_hz,
+            "ultrasonic_cutoff_khz": report.ultrasonic_cutoff_khz,
+            "latency_ms": report.latency_ms
+        },
+        "cryptography": {
+            "audio_sha256": report.audio_sha256,
+            "ed25519_signature": report.ed25519_signature,
+            "timestamp_utc": report.timestamp_utc
+        },
+        "spoken_alert_for_alexa": (
+            f"Alexa Music Sentry: This track was generated by synthetic AI ({report.primary_model_attributed}) "
+            f"with {report.confidence*100:.1f}% confidence. Commercial streaming rights flagged for human artist copyright protection."
+            if report.verdict == "AI_GENERATED_MUSIC" else
+            "Alexa Music Sentry: Verified genuine studio acoustic recording with natural stereo phase dispersion."
+        ),
+        "action_recommended": report.action_recommended
+    }
+
+
+def inspect_multimodal_identity(
+    audio_preset: Optional[str] = "grandparent_scam",
+    image_preset: Optional[str] = "ai_avatar_scammer",
+    channel: str = "clean"
+) -> Dict[str, Any]:
+    """Inspects combined caller audio and visual credentials/KYC image for cross-domain deepfakes."""
+    report = multimodal_bridge.analyze_multimodal(
+        audio_preset=audio_preset,
+        image_preset=image_preset,
+        channel=channel
+    )
+    return {
+        "status": "success",
+        "mcp_version": "2025-11-25",
+        "tool": "inspect_multimodal_identity",
+        "session_id": report.session_id,
+        "final_verdict": report.final_verdict,
+        "joint_scam_risk_score": report.joint_scam_risk_score,
+        "audio_verdict": report.audio_report.verdict if report.audio_report else None,
+        "image_verdict": report.image_verdict,
+        "alexa_action": report.alexa_action,
+        "combined_ed25519_signature": report.combined_ed25519_signature,
+        "latency_ms": report.latency_ms
+    }
+
+
 if __name__ == "__main__":
     print("Starting AcousticShield FastMCP Server on port 8000...")
-    print("Registered tool: inspect_audio_authenticity()")
+    print("Registered tools: [inspect_audio_authenticity, inspect_music_authenticity, inspect_multimodal_identity]")
     sample_response = inspect_audio_authenticity()
-    print("\nSample MCP Response:")
+    print("\nSample Audio MCP Response:")
     print(json.dumps(sample_response, indent=2))
+    sample_music = inspect_music_authenticity()
+    print("\nSample Music MCP Response:")
+    print(json.dumps(sample_music, indent=2))

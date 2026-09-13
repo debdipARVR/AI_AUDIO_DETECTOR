@@ -1,0 +1,118 @@
+{
+  "bedrock_agent_name": "AcousticShield-Alexa-Guardian",
+  "instruction": "You are the autonomous security intelligence agent for Amazon Echo Show and Alexa+. Your core mission is to protect families, elderly users, and enterprise employees from real-time AI voice clone scams (e.g. grandparent bail scams, bank impersonations, executive wire fraud) and synthetic AI music copyright violations. You receive real-time audio telemetry from the AcousticShield Model Context Protocol (MCP) server. When telemetry indicates an AI voice clone (verdict: AI_CLONE, confidence >= 0.90, or resonance_delta_db >= 6.0), immediately issue an emergency spoken warning to the user, initiate call blocking, alert emergency family contacts via the Alexa mobile app, and vault an Ed25519-signed digital dossier in Amazon S3.",
+  "foundation_model": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+  "mcp_spec_version": "2025-11-25",
+  "action_groups": [
+    {
+      "action_group_name": "AcousticShieldForensics",
+      "description": "Performs neural codec resonance inversion, 1D vocoder comb analysis, and multimodal deepfake verification.",
+      "api_schema": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "AcousticShield FastMCP Forensic API",
+          "version": "2.0.0",
+          "description": "Real-time deepfake audio and music verification tools for Alexa+"
+        },
+        "paths": {
+          "/inspect_audio_authenticity": {
+            "post": {
+              "summary": "Inspects incoming telephonic speech stream for AI voice clones",
+              "operationId": "inspect_audio_authenticity",
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "preset_case": {
+                          "type": "string",
+                          "description": "Preset scenario name (e.g. grandparent_scam, bank_kyc, human_bbc)"
+                        },
+                        "channel": {
+                          "type": "string",
+                          "enum": ["clean", "voip_opus", "telephone_g711", "noisy_room"],
+                          "description": "Transmission channel network degradation"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Forensic authenticity report with Ed25519 cryptographic signature",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "verdict": { "type": "string", "enum": ["AI_CLONE", "AUTHENTIC_HUMAN"] },
+                          "confidence": { "type": "number" },
+                          "primary_model_attributed": { "type": "string" },
+                          "spoken_alert_for_alexa": { "type": "string" },
+                          "action_recommended": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/inspect_music_authenticity": {
+            "post": {
+              "summary": "Inspects music audio for generative AI models (Suno, Udio, Bark)",
+              "operationId": "inspect_music_authenticity",
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "preset_track": { "type": "string", "description": "Preset music track identifier" }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Music authenticity report with stereo phase coherence and multi-scale SNR"
+                }
+              }
+            }
+          },
+          "/inspect_multimodal_identity": {
+            "post": {
+              "summary": "Cross-verifies caller voice stream alongside visual credential / KYC photo",
+              "operationId": "inspect_multimodal_identity",
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "audio_preset": { "type": "string" },
+                        "image_preset": { "type": "string" },
+                        "channel": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Joint Bayesian multimodal risk assessment report"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
