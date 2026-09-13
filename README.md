@@ -7,6 +7,8 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![MCP Spec](https://img.shields.io/badge/MCP-Spec%202025--11--25-purple.svg)](https://modelcontextprotocol.io/)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
+[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Space-orange)](https://huggingface.co/spaces/DebdipCS/acoustic-resonance-audio-forensics)
+[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue)](https://huggingface.co/datasets/DebdipCS/Acoustic-Resonance-Audio-Forensics-Benchmark)
 
 ---
 
@@ -21,6 +23,8 @@ While conventional classifiers rely on surface spectrogram CNNs or self-supervis
 ---
 
 ## 🚀 Live Demo & Web App
+- **Hugging Face Interactive Space**: [https://huggingface.co/spaces/DebdipCS/acoustic-resonance-audio-forensics](https://huggingface.co/spaces/DebdipCS/acoustic-resonance-audio-forensics)
+- **Hugging Face Benchmark Dataset**: [https://huggingface.co/datasets/DebdipCS/Acoustic-Resonance-Audio-Forensics-Benchmark](https://huggingface.co/datasets/DebdipCS/Acoustic-Resonance-Audio-Forensics-Benchmark)
 - **Streamlit Community Cloud (1-Click Launch)**: [![Deploy to Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
   - Direct Deploy URL: [https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py](https://share.streamlit.io/deploy?repository=debdipARVR/AI_AUDIO_DETECTOR&branch=main&mainModule=app.py)
 - **Local Web App**: Accessible at `http://localhost:8550`
