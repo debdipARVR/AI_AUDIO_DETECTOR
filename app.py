@@ -2,6 +2,7 @@
 AcousticShield: Amazon Audio Forensics & Sentry Workbench
 Amazon Developer Hackathon (2026) • Track: Alexa+ ($25K) • AWS Bedrock & ECS
 Design System: Amazon Light Themed Website with ScribeMark Broadsheet Architecture
+Zero Dynamic JS Chunk Dependencies: Native HTML5 Audio & Native High-DPI Visualizations
 """
 
 import os
@@ -9,6 +10,7 @@ import sys
 import time
 import json
 import io
+import base64
 import hashlib
 from typing import Optional, Dict, Any, List, Tuple
 import numpy as np
@@ -16,7 +18,6 @@ import streamlit as st
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import plotly.graph_objects as go
 
 # Ensure repo paths on sys.path
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -319,6 +320,104 @@ div[data-baseweb="select"] * {
 
 st.markdown(AMAZON_LIGHT_CSS, unsafe_allow_html=True)
 
+
+# ==============================================================================
+# BULLETPROOF RENDERING HELPERS (Zero Dynamic JS Modules)
+# ==============================================================================
+def render_audio_player(audio_path_or_bytes, mime: str = "audio/wav"):
+    """Renders a 100% native HTML5 audio element using base64. Immune to Vite dynamic import errors."""
+    try:
+        if isinstance(audio_path_or_bytes, str):
+            if not os.path.exists(audio_path_or_bytes):
+                return
+            with open(audio_path_or_bytes, "rb") as f:
+                b64 = base64.b64encode(f.read()).decode()
+        elif isinstance(audio_path_or_bytes, (bytes, bytearray)):
+            b64 = base64.b64encode(audio_path_or_bytes).decode()
+        else:
+            return
+
+        html_code = f'''
+        <div style="margin: 8px 0;">
+          <audio controls style="width: 100%; border-radius: 8px; outline: none; background: #f1f3f4;">
+            <source src="data:{mime};base64,{b64}" type="{mime}">
+            Your browser does not support HTML5 audio playback.
+          </audio>
+        </div>
+        '''
+        st.markdown(html_code, unsafe_allow_html=True)
+    except Exception as e:
+        st.caption(f"Audio playback note: {e}")
+
+
+def render_spectral_rolloff_chart(is_ai_sample: bool):
+    """Renders high-DPI Amazon Light Spectral Rolloff chart via Matplotlib. Immune to Plotly JS failures."""
+    fig, ax = plt.subplots(figsize=(7, 2.3), dpi=150)
+    fig.patch.set_facecolor("#ffffff")
+    ax.set_facecolor("#f8fafc")
+
+    freqs = np.linspace(100, 24000, 300)
+    if is_ai_sample:
+        curve = 1.0 / (1.0 + np.exp((freqs - 17200) / 400))
+        ax.plot(freqs, curve, color="#b12704", lw=2.5, label="AI Synthetic Rolloff (17.2 kHz)")
+        ax.axvline(17200, color="#ff9900", ls="--", lw=1.5, label="RVQ Brickwall Cutoff")
+    else:
+        curve = 1.0 / (1.0 + np.exp((freqs - 22050) / 1200))
+        ax.plot(freqs, curve, color="#067d62", lw=2.5, label="Authentic Studio Rolloff (22.05 kHz)")
+
+    ax.set_title("High-Frequency Energy Rolloff & Codebook Nyquist Boundary", fontsize=9.5, fontweight="bold", color="#0f1111", pad=10)
+    ax.set_xlabel("Frequency (Hz)", fontsize=8, color="#565959")
+    ax.set_ylabel("Normalized Power", fontsize=8, color="#565959")
+    ax.tick_params(colors="#565959", labelsize=8)
+    for spine in ax.spines.values():
+        spine.set_color("#d5d9d9")
+    ax.grid(True, color="#e2e8f0", ls="-", lw=0.8)
+    ax.legend(loc="upper right", fontsize=7.5, framealpha=0.95)
+    plt.tight_layout()
+
+    buf = io.BytesIO()
+    plt.savefig(buf, format="png", bbox_inches="tight", facecolor="#ffffff")
+    plt.close(fig)
+    b64 = base64.b64encode(buf.getvalue()).decode()
+    st.markdown(f'<img src="data:image/png;base64,{b64}" style="width: 100%; border-radius: 8px; border: 1px solid #d5d9d9; margin: 10px 0;">', unsafe_allow_html=True)
+
+
+def render_comb_harmonics_chart(is_scam: bool, comb_spikes_detected: bool, comb_peak_frequencies_hz: list):
+    """Renders high-DPI Amazon Light Comb Harmonics spectrum via Matplotlib. Immune to Plotly JS failures."""
+    fig, ax = plt.subplots(figsize=(7, 2.3), dpi=150)
+    fig.patch.set_facecolor("#ffffff")
+    ax.set_facecolor("#f8fafc")
+
+    freqs_v = np.linspace(100, 4000, 300)
+    if is_scam:
+        spec_res = 12.0 + 3.0 * np.sin(2 * np.pi * freqs_v / 800.0) ** 4 + np.random.normal(0, 0.4, len(freqs_v))
+        ax.plot(freqs_v, spec_res, color="#b12704", lw=2.0, label="Deepfake Codec Resonance")
+        if comb_spikes_detected:
+            for spike in comb_peak_frequencies_hz:
+                ax.axvline(spike, color="#ff9900", ls="--", lw=1.2, label=f"Comb {spike}Hz")
+    else:
+        spec_res = 3.0 + 20.0 / (1.0 + (freqs_v / 800.0)) + np.random.normal(0, 0.5, len(freqs_v))
+        ax.plot(freqs_v, spec_res, color="#067d62", lw=2.0, label="Natural Vocal Tract Roll-off")
+
+    ax.set_title("Neural Codec Residual Spectrum & 1D Transposed Conv Comb Harmonics", fontsize=9.5, fontweight="bold", color="#0f1111", pad=10)
+    ax.set_xlabel("Frequency (Hz)", fontsize=8, color="#565959")
+    ax.set_ylabel("Residual Energy (dB)", fontsize=8, color="#565959")
+    ax.tick_params(colors="#565959", labelsize=8)
+    for spine in ax.spines.values():
+        spine.set_color("#d5d9d9")
+    ax.grid(True, color="#e2e8f0", ls="-", lw=0.8)
+    handles, labels = ax.get_legend_handles_labels()
+    by_label = dict(zip(labels[:3], handles[:3]))
+    ax.legend(by_label.values(), by_label.keys(), loc="upper right", fontsize=7.5, framealpha=0.95)
+    plt.tight_layout()
+
+    buf = io.BytesIO()
+    plt.savefig(buf, format="png", bbox_inches="tight", facecolor="#ffffff")
+    plt.close(fig)
+    b64 = base64.b64encode(buf.getvalue()).decode()
+    st.markdown(f'<img src="data:image/png;base64,{b64}" style="width: 100%; border-radius: 8px; border: 1px solid #d5d9d9; margin: 10px 0;">', unsafe_allow_html=True)
+
+
 # ------------------------------------------------------------------------------
 # MASTHEAD HEADER (Amazon Signature Dark Navy Banner)
 # ------------------------------------------------------------------------------
@@ -405,9 +504,9 @@ with tab_music:
             else:
                 uploaded_music = st.file_uploader("Upload Music File", type=["wav", "mp3"])
 
-            # Play audio
+            # Native HTML5 audio player
             if music_file_path and os.path.exists(music_file_path):
-                st.audio(music_file_path)
+                render_audio_player(music_file_path)
                 st.markdown(f'<div style="font-size: 11px; color: #565959; margin: 4px 0 10px 0;">ℹ️ <em>{track_desc}</em></div>', unsafe_allow_html=True)
 
             st.markdown('''
@@ -504,34 +603,8 @@ with tab_music:
                 </div>
                 ''', unsafe_allow_html=True)
 
-            # Plotly Spectral Rolloff & Phase Visualization (Light Theme)
-            freqs = np.linspace(100, 24000, 300)
-            if is_ai_sample:
-                curve = 1.0 / (1.0 + np.exp((freqs - 17200) / 400))
-            else:
-                curve = 1.0 / (1.0 + np.exp((freqs - 22050) / 1200))
-
-            fig_m = go.Figure()
-            fig_m.add_trace(go.Scatter(
-                x=freqs, y=curve,
-                mode="lines",
-                name="Spectral Rolloff Profile",
-                line=dict(color="#b12704" if is_ai_sample else "#067d62", width=2.5)
-            ))
-            if is_ai_sample:
-                fig_m.add_vline(x=17200, line_dash="dash", line_color="#ff9900",
-                                annotation_text="17.2 kHz RVQ Brickwall", annotation_position="top")
-
-            fig_m.update_layout(
-                title=dict(text="High-Frequency Energy Rolloff & Codebook Nyquist Boundary", font=dict(family="Inter", size=13, color="#0f1111")),
-                xaxis=dict(title="Frequency (Hz)", showgrid=True, gridcolor="#e2e8f0", zerolinecolor="#cbd5e1"),
-                yaxis=dict(title="Normalized Power", showgrid=True, gridcolor="#e2e8f0", zerolinecolor="#cbd5e1"),
-                plot_bgcolor="#f8fafc",
-                paper_bgcolor="#ffffff",
-                height=220,
-                margin=dict(l=35, r=15, t=35, b=25)
-            )
-            st.plotly_chart(fig_m, use_container_width=True)
+            # High-DPI Amazon Light Spectral Rolloff Chart (Zero JS dependencies)
+            render_spectral_rolloff_chart(is_ai_sample)
 
             # Cryptographic Attestation Proof
             sha_mock = hashlib.sha256(music_preset.encode()).hexdigest()
@@ -625,7 +698,7 @@ with tab_voice:
                 audio_file = "test_samples/06_authentic_bbc_radio4_interview.wav"
 
             if os.path.exists(audio_file):
-                st.audio(audio_file)
+                render_audio_player(audio_file)
 
             st.markdown(f'''
             <div class="info-card-inset">
@@ -702,35 +775,8 @@ with tab_voice:
                 </div>
                 ''', unsafe_allow_html=True)
 
-            # Plotly Comb Harmonics Spectrum Chart (Light Theme)
-            freqs_v = np.linspace(100, 4000, 300)
-            if is_scam:
-                spec_res = 12.0 + 3.0 * np.sin(2 * np.pi * freqs_v / 800.0) ** 4 + np.random.normal(0, 0.4, len(freqs_v))
-            else:
-                spec_res = 3.0 + 20.0 / (1.0 + (freqs_v / 800.0)) + np.random.normal(0, 0.5, len(freqs_v))
-
-            fig_v = go.Figure()
-            fig_v.add_trace(go.Scatter(
-                x=freqs_v, y=spec_res,
-                mode="lines",
-                name="Inversion Residual",
-                line=dict(color="#b12704" if is_scam else "#067d62", width=2)
-            ))
-            if report.comb_spikes_detected:
-                for spike in report.comb_peak_frequencies_hz:
-                    fig_v.add_vline(x=spike, line_dash="dash", line_color="#ff9900",
-                                    annotation_text=f"{spike}Hz", annotation_position="top")
-
-            fig_v.update_layout(
-                title=dict(text="Neural Codec Residual Spectrum & 1D Transposed Conv Comb Harmonics", font=dict(family="Inter", size=13, color="#0f1111")),
-                xaxis=dict(title="Frequency (Hz)", showgrid=True, gridcolor="#e2e8f0", zerolinecolor="#cbd5e1"),
-                yaxis=dict(title="Residual Energy (dB)", showgrid=True, gridcolor="#e2e8f0", zerolinecolor="#cbd5e1"),
-                plot_bgcolor="#f8fafc",
-                paper_bgcolor="#ffffff",
-                height=220,
-                margin=dict(l=35, r=15, t=35, b=25)
-            )
-            st.plotly_chart(fig_v, use_container_width=True)
+            # High-DPI Amazon Light Comb Harmonics Spectrum (Zero JS dependencies)
+            render_comb_harmonics_chart(is_scam, report.comb_spikes_detected, report.comb_peak_frequencies_hz)
 
 
 # ==============================================================================
